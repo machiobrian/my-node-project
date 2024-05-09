@@ -1,34 +1,24 @@
-// enrty to app & server logic
+// create an express app server
 
-// -------------- HTTP SERVER
-const http = require('http');
-// create an http server - createServer method
-const server = http.createServer((req, res) => {
-    // set the response headers
-    res.writeHead(200, {'Content-Type' : 'text/html'})
-    // writ ethe response content
-    res.write('<h2>Helloo, Node.js Http Server!</h2>')
-    res.end()
-})
-
-// specify the port to listen on 
-const port_http = 3001
-
-// start the server
-server.listen(port_http, () => {
-    console.log(`Node.js Http Server running on port ${port_http}`)
-})
-
-// ------------ EXPRESS.JS SERVER
 const express = require('express')
-const app = express() // creates an express application
+const app = express()
 
-// define routes and route handlers
+// import the routers & assign them to an end point prefix
+const usersRoutes = require('./routes/users')
+const productsRoute = require('./routes/products')
+
 app.get('/', (req, res) => {
-    res.send('<h3> Hellooo, from Express.js (app) Server</h3>')
+    res.send('hello root node')
 })
 
-const port = process.env.PORT || 3000
+// including the user/product route files
+app.use('/users', usersRoutes)
+app.use('/product', productsRoute)
+
+// define the port to serve the application routes
+const port = 5000
+
+// start the listening bit of the server
 app.listen(port, () => {
-    console.log(`Express server is running on port ${port}`)
+    console.log(`Server is exposed in port: ${port} `)
 })
