@@ -3,7 +3,7 @@ const router = express.Router()
 
 // define the product/(s) route(s)
 router.get('/', (req, res) => {
-    res.send('the produts main route')
+    res.send('the products main route')
 })
 router.get('/101', (req, res) => {
     res.send('product/101')
