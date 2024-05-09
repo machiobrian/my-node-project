@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 // including the user/product route files
 app.use('/users', usersRoutes)
-app.use('/product', productsRoute)
+app.use('/products', productsRoute)
 
 // define the port to serve the application routes
 const port = 5000
