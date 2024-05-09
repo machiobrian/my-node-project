@@ -6,6 +6,7 @@ const app = express()
 // import the routers & assign them to an end point prefix
 const usersRoutes = require('./routes/users')
 const productsRoute = require('./routes/products')
+const locationsRoutes = require('./routes/locations')
 
 app.get('/', (req, res) => {
     res.send('hello root node')
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 // including the user/product route files
 app.use('/users', usersRoutes)
 app.use('/products', productsRoute)
+app.use('/locations', locationsRoutes)
 
 // define the port to serve the application routes
 const port = 5000
